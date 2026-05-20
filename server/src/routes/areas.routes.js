@@ -1,10 +1,12 @@
 const router = require('express').Router()
 const { getAll, getById, create, update, remove } = require('../controllers/areas.controller')
 
-router.get('/', getAll)
-router.get('/:id', getById)
-router.post('/', create)
-router.put('/:id', update)
-router.delete('/:id', remove)
+const { isAuthenticated, checkRole } = require('../middleware/auth')
+
+router.get('/', isAuthenticated, getAll);
+router.get('/:id', isAuthenticated, getById);
+router.post('/', isAuthenticated, checkRole('admin'), create);
+router.put('/:id', isAuthenticated, checkRole('admin'), update);
+router.delete('/:id', isAuthenticated, checkRole('admin'), remove);
 
 module.exports = router

@@ -17,8 +17,20 @@ El proyecto ya tiene 7 migraciones aplicadas que crean todas las tablas del sist
 Abre la carpeta `server/src/db/migrations/` y responde:
 
 1. ¿Qué tabla crea la migración `1746000005000_create-requests.js`? ¿Qué columnas tiene?
+
+La tabla que se crea es para peticiones. 
+
+La tabla de `1746000005000_create-requests.js` tiene las columnas de id, titulo, tabla, descripción, status, user_id, area_id, así como categoría_id donde se definen su tipo, referencias... Y así como también el tiempo de su creación como la actualización.
+
 2. ¿Qué hace el método `exports.down` en cualquiera de los archivos? ¿Para qué sirve?
+
+El método de exports.down es un método que se utiliza para revertir o cancelar una migración, deshaciendo los cambios realizados por su método contrario exports.up
+
+Basicamente elimina si se crean tablas o columnas, volviendo al estado anterior de la base de datos sin perder datos críticos en otras tablas. 
+
 3. ¿Por qué los archivos tienen un número tan largo al inicio (ej. `1746000001000`)? ¿Qué representa ese número?
+
+Asumo que los archivos tienen un número tan largo por...
 
 ---
 
