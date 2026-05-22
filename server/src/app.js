@@ -12,6 +12,8 @@ const requestsRoutes = require('./routes/requests.routes')
 
 const app = express()
 
+const { errorHandler } = require('./middleware/errorHandler')
+
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
@@ -35,5 +37,7 @@ app.use('/api/users', usersRoutes)
 app.use('/api/areas', areasRoutes)
 app.use('/api/categories', categoriesRoutes)
 app.use('/api/requests', requestsRoutes)
+
+app.use(errorHandler)
 
 module.exports = app
